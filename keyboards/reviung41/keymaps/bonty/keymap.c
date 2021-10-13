@@ -10,9 +10,10 @@ enum layer_names {
 };
 
 // Mod-Tap Modifiers
+#define SFTSPC SFT_T(KC_SPC)
 #define ALTTAB ALT_T(KC_TAB)
 #define CTLESC CTL_T(KC_ESC)
-#define GUIENT GUI_T(KC_ENT)
+#define SFTENT SFT_T(KC_ENT)
 
 // Mod-Tap Layers
 #define MT_SPC LT(_NAV, KC_SPC)
@@ -52,7 +53,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     ALTTAB,   KC_Q,     KC_W,     KC_E,     KC_R,      KC_T,               KC_Y,     KC_U,     KC_I,     KC_O,     KC_P,     KC_BSPC,
     CTLESC,   KC_A,     KC_S,     KC_D,     KC_F,      KC_G,               KC_H,     KC_J,     KC_K,     KC_L,     KC_SCLN,  KC_MINS,
     OS_SFT,   KC_Z,     KC_X,     KC_C,     KC_V,      KC_B,               KC_N,     KC_M,     KC_COMM,  KC_DOT,   KC_SLSH,  KC_RALT,
-                                            NUMBER,    MT_SPC,   OS_SFT,   GUIENT,   SYMBOL
+                                            NUMBER,    MT_SPC,   SFTSPC,   SFTENT,   SYMBOL
   ),
 
   [_COLEMAK] = LAYOUT_reviung41(
