@@ -10,25 +10,17 @@ enum layer_names {
 };
 
 // Mod-Tap Modifiers
-#define ALTTAB ALT_T(KC_TAB)
-#define CTLESC CTL_T(KC_ESC)
 #define SFTENT SFT_T(KC_ENT)
 
 // Mod-Tap Layers
 #define MT_SPC LT(_NAV, KC_SPC)
-
-// OneShot Modifiers
-#define OS_SFT OSM(MOD_LSFT)
-#define OS_GUI OSM(MOD_LGUI)
-#define OS_ALT OSM(MOD_LALT)
-#define OS_CTL OSM(MOD_LCTL)
 
 // Layers
 #define NUMBER OSL(_NUMBER)
 #define SYMBOL OSL(_SYMBOL)
 #define OPTION OSL(_OPTION)
 
-// Shortcuts
+// OS Shortcuts
 #define REDO LSG(KC_Z)
 #define UNDO LGUI(KC_Z)
 #define CUT LGUI(KC_X)
@@ -38,6 +30,12 @@ enum layer_names {
 #define PREVTAB LCTL(LSFT(KC_TAB))
 #define HISTBK LGUI(KC_LBRC)
 #define HISTFW LGUI(KC_RBRC)
+
+// Yabai Shortcuts
+#define NEXTWDW LALT(KC_J)
+#define PREVWDW LALT(KC_K)
+#define NEXTDIS LALT(KC_DOT)
+#define PREVDIS LALT(KC_COMM)
 
 // Apps
 #define ONEPASS LCTL(KC_ENT)
@@ -49,8 +47,8 @@ enum layer_names {
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [_QWERTY] = LAYOUT_reviung41(
-    ALTTAB,   KC_Q,     KC_W,     KC_E,     KC_R,      KC_T,               KC_Y,     KC_U,     KC_I,     KC_O,     KC_P,     ONEPASS,
-    CTLESC,   KC_A,     KC_S,     KC_D,     KC_F,      KC_G,               KC_H,     KC_J,     KC_K,     KC_L,     KC_SCLN,  KC_RGUI,
+    KC_ESC,   KC_Q,     KC_W,     KC_E,     KC_R,      KC_T,               KC_Y,     KC_U,     KC_I,     KC_O,     KC_P,     ONEPASS,
+    KC_LCTL,  KC_A,     KC_S,     KC_D,     KC_F,      KC_G,               KC_H,     KC_J,     KC_K,     KC_L,     KC_SCLN,  KC_RGUI,
     KC_LALT,  KC_Z,     KC_X,     KC_C,     KC_V,      KC_B,               KC_N,     KC_M,     KC_COMM,  KC_DOT,   KC_SLSH,  KC_RSFT,
                                             NUMBER,    MT_SPC,   ALFRED,   SFTENT,   SYMBOL
   ),
@@ -63,9 +61,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ),
 
   [_NAV] = LAYOUT_reviung41(
-    OPTION,   XXXXXXX,  XXXXXXX,  ONEPASS,  ALFRED,    XXXXXXX,            KC_HOME,  KC_PGDN,  KC_PGUP,  KC_END,   XXXXXXX,  XXXXXXX,
-    XXXXXXX,  OS_CTL,   OS_ALT,   OS_GUI,   OS_SFT,    XXXXXXX,            KC_LEFT,  KC_DOWN,  KC_UP,    KC_RGHT,  HISTBK,   XXXXXXX,
-    REDO,     UNDO,     CUT,      COPY,     PASTE,     XXXXXXX,            XXXXXXX,  PREVTAB,  NEXTTAB,  XXXXXXX,  HISTFW,   XXXXXXX,
+    OPTION,   XXXXXXX,  XXXXXXX,  KC_HOME,  KC_END,    KC_PGUP,            PREVDIS,  NEXTWDW,  PREVWDW,  NEXTDIS,  XXXXXXX,  XXXXXXX,
+    XXXXXXX,  KC_LCTL,  KC_LALT,  KC_LGUI,  KC_LSFT,   KC_PGDN,            KC_LEFT,  KC_DOWN,  KC_UP,    KC_RGHT,  XXXXXXX,   XXXXXXX,
+    REDO,     UNDO,     CUT,      COPY,     PASTE,     XXXXXXX,            HISTBK,   PREVTAB,  NEXTTAB,  HISTFW,   XXXXXXX,   XXXXXXX,
                                             XXXXXXX,   XXXXXXX,  KC_TAB,   KC_BSPC,  KC_DEL
   ),
 
