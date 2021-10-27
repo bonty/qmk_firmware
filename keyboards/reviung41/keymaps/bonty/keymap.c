@@ -61,8 +61,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ),
 
   [_NAV] = LAYOUT_reviung41(
-    OPTION,   XXXXXXX,  XXXXXXX,  KC_HOME,  KC_END,    KC_PGUP,            PREVDIS,  NEXTWDW,  PREVWDW,  NEXTDIS,  XXXXXXX,  XXXXXXX,
-    XXXXXXX,  KC_LCTL,  KC_LALT,  KC_LGUI,  KC_LSFT,   KC_PGDN,            KC_LEFT,  KC_DOWN,  KC_UP,    KC_RGHT,  XXXXXXX,   XXXXXXX,
+    OPTION,   XXXXXXX,  XXXXXXX,  PREVWDW,  NEXTWDW,   PREVDIS,            KC_HOME,  KC_PGDN,  KC_PGUP,  KC_END,   XXXXXXX,   XXXXXXX,
+    XXXXXXX,  KC_LCTL,  KC_LALT,  KC_LGUI,  KC_LSFT,   NEXTDIS,            KC_LEFT,  KC_DOWN,  KC_UP,    KC_RGHT,  XXXXXXX,   XXXXXXX,
     REDO,     UNDO,     CUT,      COPY,     PASTE,     XXXXXXX,            HISTBK,   PREVTAB,  NEXTTAB,  HISTFW,   XXXXXXX,   XXXXXXX,
                                             XXXXXXX,   XXXXXXX,  KC_TAB,   KC_BSPC,  KC_DEL
   ),
