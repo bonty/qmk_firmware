@@ -71,14 +71,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     XXXXXXX,  KC_DQUO,  KC_UNDS,  KC_LBRC,  KC_RBRC,   KC_CIRC,            KC_EXLM,  KC_LT,    KC_GT,    KC_EQL,   KC_AMPR,  XXXXXXX,
     XXXXXXX,  KC_SLSH,  KC_MINS,  KC_LCBR,  KC_RCBR,   KC_ASTR,            KC_QUES,  KC_LPRN,  KC_RPRN,  KC_QUOT,  KC_COLN,  XXXXXXX,
     XXXXXXX,  KC_HASH,  KC_DLR,   KC_PIPE,  KC_TILD,   KC_GRV,             KC_PLUS,  KC_PERC,  KC_BSLS,  KC_AT,    XXXXXXX,  XXXXXXX,
-                                            XXXXXXX,   XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX
+                                            XXXXXXX,   XXXXXXX,  XXXXXXX,  XXXXXXX,  SYMBOL
   ),
 
   [_NUMBER] = LAYOUT_reviung41(
     XXXXXXX,  KC_F1,    KC_F2,    KC_F3,    KC_F4,     KC_F5,              KC_F6,    KC_F7,    KC_F8,    KC_F9,    KC_F10,   KC_F11,
     XXXXXXX,  KC_1,     KC_2,     KC_3,     KC_4,      KC_LANG2,           KC_LANG1, KC_7,     KC_8,     KC_9,     KC_0,     KC_F12,
     XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  KC_5,      XXXXXXX,            XXXXXXX,  KC_6,     XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,
-                                            XXXXXXX,   XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX
+                                            NUMBER ,   XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX
   ),
 
   [_OPTION] = LAYOUT_reviung41(
