@@ -64,8 +64,8 @@ enum layer_names {
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [_QWERTY]=LAYOUT(   // QWERTY
-			KC_ESC	,	KC_Q	,	KC_W	,	KC_E	,	KC_R	,	KC_T	,							KC_Y	,	KC_U	,	KC_I	,	KC_O	,	KC_P	,	KC_BSPC	,	KC_DEL	,
-			KC_LCTL	,	KC_A	,	KC_S	,	KC_D	,	KC_F	,	KC_G	,							KC_H	,	KC_J	,	KC_K	,	KC_L	,	KC_SCLN	,	KC_RGUI	,	ONEPASS	,
+			KC_ESC	,	KC_Q	,	KC_W	,	KC_E	,	KC_R	,	KC_T	,							KC_Y	,	KC_U	,	KC_I	,	KC_O	,	KC_P	,	KC_BSPC	,	ONEPASS	,
+			KC_LCTL	,	KC_A	,	KC_S	,	KC_D	,	KC_F	,	KC_G	,							KC_H	,	KC_J	,	KC_K	,	KC_L	,	KC_SCLN	,	KC_RGUI	,	ALFRED	,
 			KC_LALT	,	KC_Z	,	KC_X	,	KC_C	,	KC_V	,	KC_B	,	KC_DEL	,	KC_LGUI	,	KC_N	,	KC_M	,	KC_COMM	,	KC_DOT	,	KC_SLSH	,	KC_RALT	,
 	XXXXXXX	,						KC_LALT	,	NUMBER	,	MT_SPC	,	GUIESC	,	      ALFRED	,   	CTLTAB	,	SFTENT	,	SYMBOL	,	KC_RALT	,
 			C(KC_PMNS)	,	C(KC_PPLS)	,							KC_WH_L	,	KC_WH_R	,			KC_VOLD	,	KC_VOLU
@@ -185,7 +185,6 @@ bool led_update_user(led_t led_state) {
 
 void keyboard_post_init_user(void) {
     rgblight_layers = rgb_layers;
-    rgblight_mode_noeeprom(RGBLIGHT_MODE_RGB_TEST);
 #ifdef CONSOLE_ENABLE
     debug_enable = true;
     debug_matrix = true;
