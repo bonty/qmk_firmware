@@ -20,6 +20,12 @@ enum layer_names {
 #define SYMBOL OSL(_SYMBOL)
 #define OPTION OSL(_OPTION)
 
+// OneShot Modifiers
+#define OS_SFT OSM(MOD_LSFT)
+#define OS_GUI OSM(MOD_LGUI)
+#define OS_ALT OSM(MOD_LALT)
+#define OS_CTL OSM(MOD_LCTL)
+
 // OS Shortcuts
 #define REDO LSG(KC_Z)
 #define UNDO LGUI(KC_Z)
@@ -62,7 +68,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [_NAV] = LAYOUT_reviung41(
     OPTION,   XXXXXXX,  XXXXXXX,  PREVWDW,  NEXTWDW,   PREVDIS,            KC_HOME,  KC_PGDN,  KC_PGUP,  KC_END,   XXXXXXX,   XXXXXXX,
-    XXXXXXX,  KC_LCTL,  KC_LALT,  KC_LGUI,  KC_LSFT,   NEXTDIS,            KC_LEFT,  KC_DOWN,  KC_UP,    KC_RGHT,  XXXXXXX,   XXXXXXX,
+    XXXXXXX,  OS_CTL,   OS_ALT,   OS_GUI,   OS_SFT,    NEXTDIS,            KC_LEFT,  KC_DOWN,  KC_UP,    KC_RGHT,  XXXXXXX,   XXXXXXX,
     REDO,     UNDO,     CUT,      COPY,     PASTE,     XXXXXXX,            HISTBK,   PREVTAB,  NEXTTAB,  HISTFW,   XXXXXXX,   XXXXXXX,
                                             XXXXXXX,   XXXXXXX,  KC_TAB,   KC_BSPC,  KC_DEL
   ),
