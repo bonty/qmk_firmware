@@ -25,9 +25,9 @@ enum layer_names {
 };
 
 // Mod-Tap Modifiers
-#define CTLTAB CTL_T(KC_TAB)
+#define CTLESC CTL_T(KC_ESC)
 #define SFTENT SFT_T(KC_ENT)
-#define GUIESC GUI_T(KC_ESC)
+#define GUIENT GUI_T(KC_ENT)
 
 // Mod-Tap Layers
 #define MT_SPC LT(_NAV, KC_SPC)
@@ -70,11 +70,11 @@ enum layer_names {
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [_QWERTY]=LAYOUT(   // QWERTY
-			KC_ESC	,	KC_Q	,	KC_W	,	KC_E	,	KC_R	,	KC_T	,							KC_Y	,	KC_U	,	KC_I	,	KC_O	,	KC_P	,	KC_BSPC	,	ONEPASS	,
-			KC_LCTL	,	KC_A	,	KC_S	,	KC_D	,	KC_F	,	KC_G	,							KC_H	,	KC_J	,	KC_K	,	KC_L	,	KC_SCLN	,	KC_RGUI	,	ALFRED	,
-			KC_LALT	,	KC_Z	,	KC_X	,	KC_C	,	KC_V	,	KC_B	,	KC_DEL	,	KC_LGUI	,	KC_N	,	KC_M	,	KC_COMM	,	KC_DOT	,	KC_SLSH	,	KC_RALT	,
-	XXXXXXX	,						KC_LALT	,	NUMBER	,	MT_SPC	,	GUIESC	,	      ALFRED	,   	CTLTAB	,	SFTENT	,	SYMBOL	,	KC_RALT	,
-			C(KC_PMNS)	,	C(KC_PPLS)	,							KC_WH_L	,	KC_WH_R	,			KC_VOLD	,	KC_VOLU
+			KC_TAB	,	KC_Q	,	KC_W	,	KC_E	,	KC_R	,	KC_T	,							KC_Y	,	KC_U	,	KC_I	,	KC_O	,	KC_P	,	KC_BSPC	,	ONEPASS	,
+			CTLESC	,	KC_A	,	KC_S	,	KC_D	,	KC_F	,	KC_G	,							KC_H	,	KC_J	,	KC_K	,	KC_L	,	KC_SCLN	,	GUIENT	,	ALFRED	,
+			KC_LSFT	,	KC_Z	,	KC_X	,	KC_C	,	KC_V	,	KC_B	,	KC_DEL	,	KC_LGUI	,	KC_N	,	KC_M	,	KC_COMM	,	KC_DOT	,	KC_SLSH	,	KC_LALT	,
+	KC_MUTE	,						KC_LALT	,	KC_LGUI	,	NUMBER	,	MT_SPC	,	      ALFRED	,   	SFTENT	,	SYMBOL	,	KC_RCTL	,	KC_RGUI	,
+			KC_VOLD	,	KC_VOLU	,							PREVTAB	,	NEXTTAB	,			KC_PGDN	,	KC_PGUP
 ),
 
 [_COLEMAK]=LAYOUT(   // COLEMAK
@@ -127,6 +127,11 @@ static PROGMEM comb_keys_t
     comb_keys_QwKana = {KC_H, KC_J, COMBO_END},
     comb_keys_QwEisu = {KC_F, KC_G, COMBO_END},
     comb_keys_QwEsc  = {KC_D, KC_F, COMBO_END},
+    comb_keys_QwTab  = {KC_U, KC_I, COMBO_END},
+    comb_keys_QwSTab = {KC_I, KC_O, COMBO_END},
+    comb_keys_QwBksp = {KC_J, KC_K, COMBO_END},
+    comb_keys_QwABsp = {KC_J, KC_K, KC_L, COMBO_END},
+    comb_keys_QwDel  = {KC_K, KC_L, COMBO_END},
     // ColemakDH
     comb_keys_CmKana = {KC_M, KC_N, COMBO_END},
     comb_keys_CmEisu = {KC_T, KC_G, COMBO_END},
@@ -136,6 +141,11 @@ combo_t key_combos[COMBO_COUNT] = {
     COMBO(comb_keys_QwKana, KC_LANG1),
     COMBO(comb_keys_QwEisu, KC_LANG2),
     COMBO(comb_keys_QwEsc,  KC_ESC),
+    COMBO(comb_keys_QwTab,  KC_TAB),
+    COMBO(comb_keys_QwSTab, LSFT(KC_TAB)),
+    COMBO(comb_keys_QwBksp, KC_BSPC),
+    COMBO(comb_keys_QwABsp, LALT(KC_BSPC)),
+    COMBO(comb_keys_QwDel,  KC_DEL),
     COMBO(comb_keys_CmKana, KC_LANG1),
     COMBO(comb_keys_CmEisu, KC_LANG2),
     COMBO(comb_keys_CmEsc,  KC_ESC),

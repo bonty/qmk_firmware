@@ -1,2 +1,1 @@
 COMBO_ENABLE = yes
-VIA_ENABLE = no
