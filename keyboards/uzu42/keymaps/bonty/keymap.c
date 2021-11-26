@@ -15,19 +15,20 @@ enum layer_names {
     _NAV,
     _SYMBOL,
     _NUMBER,
+    _FUNCTION,
     _OPTION
 };
 
 // Mod-Tap Modifiers
-#define CTLTAB CTL_T(KC_TAB)
+#define CTLESC CTL_T(KC_ESC)
 #define SFTENT SFT_T(KC_ENT)
-#define GUIESC GUI_T(KC_ESC)
 
 // Mod-Tap Layers
 #define MT_SPC LT(_NAV, KC_SPC)
 
 // Layers
 #define NUMBER OSL(_NUMBER)
+#define FUNCTN MO(_FUNCTION)
 #define SYMBOL OSL(_SYMBOL)
 #define OPTION OSL(_OPTION)
 
@@ -48,15 +49,15 @@ enum layer_names {
 #define HISTBK LGUI(KC_LBRC)
 #define HISTFW LGUI(KC_RBRC)
 
-// Yabai Shortcuts
-#define NEXTWDW LALT(KC_J)
-#define PREVWDW LALT(KC_K)
-#define NEXTDIS LALT(KC_DOT)
-#define PREVDIS LALT(KC_COMM)
-
-// Apps
-#define ONEPASS LCTL(KC_ENT)
-#define ALFRED LALT(KC_SPC)
+// Edit Shortcuts
+#define BS_WORD LALT(KC_BSPC)
+#define DE_WORD LALT(KC_DEL)
+#define BS_LINE LGUI(KC_BSPC)
+#define DE_LINE LCTL(KC_K)
+#define FW_WORD LALT(KC_RGHT)
+#define BK_WORD LALT(KC_LEFT)
+#define FW_LINE LGUI(KC_RGHT)
+#define BK_LINE LGUI(KC_LEFT)
 
 // Layout
 #define QWERTY DF(_QWERTY)
@@ -71,7 +72,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|-------+-------+-------+-------+-------|                  |-------+-------+-------+-------+-------|
         KC_Z,   KC_X,   KC_C,   KC_V,   KC_B,                      KC_N,   KC_M,KC_COMM, KC_DOT,KC_SLSH,\
   //|-------+-------+-------+-------+-------+-------|  |-------+-------+-------+-------+-------+-------|
-     KC_LALT,KC_LCTL,KC_LGUI, NUMBER, MT_SPC, GUIESC,    CTLTAB, SFTENT, SYMBOL,KC_RGUI,ONEPASS, ALFRED\
+      KC_TAB, OS_CTL, OS_ALT, OS_GUI, NUMBER, MT_SPC,    SFTENT, SYMBOL, OS_CTL, OS_ALT, OS_GUI, OS_SFT\
   //|-------+-------+-------+-------+-------+-------|  |-------+-------+-------+-------+-------+-------|
   ),
 
@@ -89,13 +90,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [_NAV] = LAYOUT( \
   //,---------------------------------------.                  ,---------------------------------------.
-     XXXXXXX,XXXXXXX,PREVWDW,NEXTWDW,PREVDIS,                   KC_HOME,KC_PGDN,KC_PGUP, KC_END,XXXXXXX,\
+     XXXXXXX,XXXXXXX,BS_WORD,DE_WORD,BS_LINE,                   FW_LINE,BK_WORD,  KC_UP,FW_WORD,KC_PGUP,\
   //|-------+-------+-------+-------+-------|                  |-------+-------+-------+-------+-------|
-      OS_CTL, OS_ALT, OS_GUI, OS_SFT,NEXTDIS,                   KC_LEFT,KC_DOWN,  KC_UP,KC_RGHT,XXXXXXX,\
+     XXXXXXX,XXXXXXX,KC_BSPC, KC_DEL,DE_LINE,                   BK_LINE,KC_LEFT,KC_DOWN,KC_RGHT,KC_PGDN,\
   //|-------+-------+-------+-------+-------|                  |-------+-------+-------+-------+-------|
         UNDO,    CUT,   COPY,  PASTE,   REDO,                    HISTBK,PREVTAB,NEXTTAB, HISTFW,XXXXXXX,\
   //|-------+-------+-------+-------+-------+-------|  |-------+-------+-------+-------+-------+-------|
-      OPTION,_______,_______,XXXXXXX,XXXXXXX,XXXXXXX,    KC_TAB,KC_BSPC, KC_DEL,_______,_______,_______ \
+      OPTION,_______,_______,XXXXXXX,XXXXXXX,XXXXXXX,   KC_LSFT,KC_LALT,KC_LCTL,_______,_______,_______ \
   //|-------+-------+-------+-------+-------+-------|  |-------+-------+-------+-------+-------+-------|
   ),
 
@@ -107,22 +108,33 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|-------+-------+-------+-------+-------|                  |-------+-------+-------+-------+-------|
      KC_HASH, KC_DLR,KC_PIPE,KC_TILD, KC_GRV,                   KC_PLUS,KC_PERC,KC_BSLS,  KC_AT,XXXXXXX,\
   //|-------+-------+-------+-------+-------+-------|  |-------+-------+-------+-------+-------+-------|
-     _______,_______,_______,XXXXXXX,XXXXXXX,XXXXXXX,   XXXXXXX,XXXXXXX, SYMBOL,_______,_______,_______ \
+     _______,_______,_______,XXXXXXX, FUNCTN,XXXXXXX,   XXXXXXX,XXXXXXX,XXXXXXX,_______,_______,_______ \
   //|-------+-------+-------+-------+-------+-------|  |-------+-------+-------+-------+-------+-------|
   ),
 
   [_NUMBER] = LAYOUT( \
   //,---------------------------------------.                  ,---------------------------------------.
-       KC_F1,  KC_F2,  KC_F3,  KC_F4,  KC_F5,                     KC_F6,  KC_F7,  KC_F8,  KC_F9, KC_F10,\
+     XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX,                   KC_SLSH,   KC_7,   KC_8,   KC_9,KC_PERC,\
   //|-------+-------+-------+-------+-------|                  |-------+-------+-------+-------+-------|
-        KC_1,   KC_2,   KC_3,   KC_4,KC_LANG2,                 KC_LANG1,   KC_7,   KC_8,   KC_9,   KC_0,\
+      OS_CTL, OS_ALT, OS_GUI, OS_SFT,XXXXXXX,                      KC_0,   KC_4,   KC_5,   KC_6,KC_ASTR,\
   //|-------+-------+-------+-------+-------|                  |-------+-------+-------+-------+-------|
-     XXXXXXX,XXXXXXX,XXXXXXX,   KC_5,XXXXXXX,                   XXXXXXX,   KC_6,XXXXXXX, KC_F11, KC_F12,\
+     XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX,                   KC_MINS,   KC_1,   KC_2,   KC_3,KC_PLUS,\
   //|-------+-------+-------+-------+-------+-------|  |-------+-------+-------+-------+-------+-------|
-     _______,_______,_______, NUMBER,XXXXXXX,XXXXXXX,   XXXXXXX,XXXXXXX,XXXXXXX,_______,_______,_______ \
+     _______,_______,_______,XXXXXXX,XXXXXXX,XXXXXXX,   XXXXXXX, FUNCTN,XXXXXXX,_______,_______,_______ \
   //|-------+-------+-------+-------+-------+-------|  |-------+-------+-------+-------+-------+-------|
   ),
 
+  [_FUNCTION] = LAYOUT( \
+  //,---------------------------------------.                  ,---------------------------------------.
+     XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX,                   XXXXXXX,  KC_F7,  KC_F8,  KC_F9, KC_F12,\
+  //|-------+-------+-------+-------+-------|                  |-------+-------+-------+-------+-------|
+      OS_CTL, OS_ALT, OS_GUI, OS_SFT,XXXXXXX,                   XXXXXXX,  KC_F4,  KC_F5,  KC_F6, KC_F11,\
+  //|-------+-------+-------+-------+-------|                  |-------+-------+-------+-------+-------|
+     XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX,                   XXXXXXX,  KC_F1,  KC_F2,  KC_F3, KC_F10,\
+  //|-------+-------+-------+-------+-------+-------|  |-------+-------+-------+-------+-------+-------|
+     _______,_______,_______,XXXXXXX,XXXXXXX,XXXXXXX,   XXXXXXX,XXXXXXX,XXXXXXX,_______,_______,_______ \
+  //|-------+-------+-------+-------+-------+-------|  |-------+-------+-------+-------+-------+-------|
+  ),
 
   [_OPTION] = LAYOUT( \
   //,---------------------------------------.                  ,---------------------------------------.
