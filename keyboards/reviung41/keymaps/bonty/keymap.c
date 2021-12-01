@@ -112,6 +112,8 @@ static PROGMEM comb_keys_t
     // ColemakDH
     comb_keys_CmKana = {KC_M, KC_N, COMBO_END},
     comb_keys_CmEisu = {KC_T, KC_G, COMBO_END},
+    comb_keys_CmTab  = {KC_N, KC_E, COMBO_END},
+    comb_keys_CmSTab = {KC_E, KC_I, COMBO_END},
     comb_keys_CmEsc  = {KC_S, KC_T, COMBO_END};
 
 combo_t key_combos[COMBO_COUNT] = {
@@ -120,5 +122,7 @@ combo_t key_combos[COMBO_COUNT] = {
     // COMBO(comb_keys_QwEsc,  KC_ESC),
     COMBO(comb_keys_CmKana, KC_LANG1),
     COMBO(comb_keys_CmEisu, KC_LANG2),
+    COMBO(comb_keys_CmTab,  KC_TAB),
+    COMBO(comb_keys_CmSTab, LSFT(KC_TAB)),
     COMBO(comb_keys_CmEsc,  KC_ESC),
 };

@@ -16,11 +16,12 @@
 #include QMK_KEYBOARD_H
 
 enum layer_names {
-    _QWERTY,
+    // _QWERTY,
     _COLEMAK,
     _NAV,
     _SYMBOL,
     _NUMBER,
+    _FUNCTION,
     _OPTION
 };
 
@@ -34,6 +35,7 @@ enum layer_names {
 
 // Layers
 #define NUMBER OSL(_NUMBER)
+#define FUNCTN MO(_FUNCTION)
 #define SYMBOL OSL(_SYMBOL)
 #define OPTION OSL(_OPTION)
 
@@ -42,6 +44,7 @@ enum layer_names {
 #define OS_GUI OSM(MOD_LGUI)
 #define OS_ALT OSM(MOD_LALT)
 #define OS_CTL OSM(MOD_LCTL)
+#define OS_MEH OSM(MOD_MEH)
 
 // Shortcuts
 #define REDO LSG(KC_Z)
@@ -54,6 +57,16 @@ enum layer_names {
 #define HISTBK LGUI(KC_LBRC)
 #define HISTFW LGUI(KC_RBRC)
 
+// Edit Shortcuts
+#define BS_WORD LALT(KC_BSPC)
+#define DE_WORD LALT(KC_DEL)
+#define BS_LINE LGUI(KC_BSPC)
+#define DE_LINE LCTL(KC_K)
+#define FW_WORD LALT(KC_RGHT)
+#define BK_WORD LALT(KC_LEFT)
+#define FW_LINE LGUI(KC_RGHT)
+#define BK_LINE LGUI(KC_LEFT)
+
 // Yabai Shortcuts
 #define NEXTWDW LALT(KC_J)
 #define PREVWDW LALT(KC_K)
@@ -64,57 +77,61 @@ enum layer_names {
 #define ONEPASS LCTL(KC_ENT)
 #define ALFRED LALT(KC_SPC)
 
-// Layout
-#define QWERTY DF(_QWERTY)
-#define COLEMAK DF(_COLEMAK)
-
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
-[_QWERTY]=LAYOUT(   // QWERTY
-			KC_TAB	,	KC_Q	,	KC_W	,	KC_E	,	KC_R	,	KC_T	,							KC_Y	,	KC_U	,	KC_I	,	KC_O	,	KC_P	,	KC_BSPC	,	ONEPASS	,
-			CTLESC	,	KC_A	,	KC_S	,	KC_D	,	KC_F	,	KC_G	,							KC_H	,	KC_J	,	KC_K	,	KC_L	,	KC_SCLN	,	GUIENT	,	ALFRED	,
-			KC_LSFT	,	KC_Z	,	KC_X	,	KC_C	,	KC_V	,	KC_B	,	KC_DEL	,	KC_LGUI	,	KC_N	,	KC_M	,	KC_COMM	,	KC_DOT	,	KC_SLSH	,	KC_LALT	,
-	KC_MUTE	,						KC_LALT	,	KC_LGUI	,	NUMBER	,	MT_SPC	,	      ALFRED	,   	SFTENT	,	SYMBOL	,	KC_RCTL	,	KC_RGUI	,
-			KC_VOLD	,	KC_VOLU	,							PREVTAB	,	NEXTTAB	,			KC_PGDN	,	KC_PGUP
-),
+// [_QWERTY]=LAYOUT(   // QWERTY
+// 			KC_TAB	,	KC_Q	,	KC_W	,	KC_E	,	KC_R	,	KC_T	,							KC_Y	,	KC_U	,	KC_I	,	KC_O	,	KC_P	,	KC_BSPC	,	ONEPASS	,
+// 			CTLESC	,	KC_A	,	KC_S	,	KC_D	,	KC_F	,	KC_G	,							KC_H	,	KC_J	,	KC_K	,	KC_L	,	KC_SCLN	,	GUIENT	,	ALFRED	,
+// 			KC_LSFT	,	KC_Z	,	KC_X	,	KC_C	,	KC_V	,	KC_B	,	KC_DEL	,	KC_LGUI	,	KC_N	,	KC_M	,	KC_COMM	,	KC_DOT	,	KC_SLSH	,	KC_LALT	,
+// 	KC_MUTE	,						KC_LALT	,	KC_LGUI	,	NUMBER	,	MT_SPC	,	      ALFRED	,   	SFTENT	,	SYMBOL	,	KC_RCTL	,	KC_RGUI	,
+// 			KC_VOLD	,	KC_VOLU	,							PREVTAB	,	NEXTTAB	,			KC_PGDN	,	KC_PGUP
+// ),
 
 [_COLEMAK]=LAYOUT(   // COLEMAK
-			_______	,	KC_Q	,	KC_W	,	KC_F	,	KC_P	,	KC_B	,							KC_J	,	KC_L	,	KC_U	,	KC_Y	,	KC_SCLN	,	_______	,	_______	,
-			_______	,	KC_A	,	KC_R	,	KC_S	,	KC_T	,	KC_G	,							KC_M	,	KC_N	,	KC_E	,	KC_I	,	KC_O	,	_______	,	_______	,
-			_______	,	KC_Z	,	KC_X	,	KC_C	,	KC_D	,	KC_V	,	_______	,	_______	,	KC_K	,	KC_H	,	KC_COMM	,	KC_DOT	,	KC_SLSH	,	_______	,
-	_______	,							_______	,	_______	,	_______	,	_______	,	_______	,	_______	,	_______	,	_______	,	_______	,
-			_______	,	_______	,							_______	,	_______	,			_______	,	_______
+			KC_TAB	,	KC_Q	,	KC_W	,	KC_F	,	KC_P	,	KC_B	,							KC_J	,	KC_L	,	KC_U	,	KC_Y	,	KC_SCLN	,	KC_BSPC	,	ONEPASS	,
+			CTLESC	,	KC_A	,	KC_R	,	KC_S	,	KC_T	,	KC_G	,							KC_M	,	KC_N	,	KC_E	,	KC_I	,	KC_O	,	GUIENT	,	ALFRED	,
+			OS_SFT	,	KC_Z	,	KC_X	,	KC_C	,	KC_D	,	KC_V	,	NEXTDIS	,	KC_LGUI	,	KC_K	,	KC_H	,	KC_COMM	,	KC_DOT	,	KC_SLSH	,	OS_SFT	,
+	KC_MUTE	,						OS_ALT	,	OS_GUI	,	NUMBER	,	MT_SPC	,		ALFRED	,			SFTENT	,	SYMBOL	,	OS_CTL	,	OS_MEH	,
+			KC_VOLD	,	KC_VOLU	,							PREVWDW	,	NEXTWDW	,							KC_PGDN	,	KC_PGUP
 ),
 
 [_NAV]=LAYOUT(   // Navigation
-			OPTION	,	XXXXXXX	,	XXXXXXX	,	PREVWDW	,	NEXTWDW	,	PREVDIS	,							KC_HOME	,	KC_PGDN	,	KC_PGUP	,	KC_END	,	XXXXXXX	,	XXXXXXX	,	XXXXXXX	,
-			XXXXXXX	,	OS_CTL	,	OS_ALT	,	OS_GUI	,	OS_SFT	,	NEXTDIS	,							KC_LEFT	,	KC_DOWN	,	KC_UP	,	KC_RGHT	,	XXXXXXX	,	XXXXXXX	,	XXXXXXX	,
-			REDO	,	UNDO	,	CUT		,	COPY	,	PASTE	,	XXXXXXX	,	XXXXXXX	,			XXXXXXX	,	HISTBK	,	PREVTAB	,	NEXTTAB	,	HISTFW	,	XXXXXXX	,	XXXXXXX	,
-	XXXXXXX	,							XXXXXXX	,	XXXXXXX	,	XXXXXXX	,	XXXXXXX	,	XXXXXXX	,	KC_TAB	,	KC_BSPC	,	KC_DEL	,	XXXXXXX	,
-			XXXXXXX	,	XXXXXXX	,							XXXXXXX	,	XXXXXXX	,			XXXXXXX	,	XXXXXXX
+			OPTION	,	XXXXXXX	,	XXXXXXX	,	BS_WORD	,	DE_WORD	,	BS_LINE	,							BK_LINE	,	BK_WORD	,	KC_UP	,	FW_WORD	,	KC_PGUP	,	XXXXXXX	,	XXXXXXX	,
+			XXXXXXX	,	XXXXXXX	,	XXXXXXX	,	KC_BSPC	,	KC_DEL	,	DE_LINE	,							FW_LINE	,	KC_LEFT	,	KC_DOWN	,	KC_RGHT	,	KC_PGDN	,	XXXXXXX	,	XXXXXXX	,
+			XXXXXXX	,	UNDO	,	CUT		,	COPY	,	PASTE	,	REDO	,	XXXXXXX	,	XXXXXXX	,	HISTBK	,	PREVTAB	,	NEXTTAB	,	HISTFW	,	XXXXXXX	,	XXXXXXX	,
+	XXXXXXX	,						XXXXXXX	,	XXXXXXX	,	XXXXXXX	,	XXXXXXX	,		XXXXXXX	,			KC_LSFT	,	KC_LALT	,	KC_LCTL	,	XXXXXXX	,
+			XXXXXXX	,	XXXXXXX	,							XXXXXXX	,	XXXXXXX	,							XXXXXXX	,	XXXXXXX
 ),
 
 [_SYMBOL]=LAYOUT(   // Symbol
 			XXXXXXX	,	KC_DQUO	,	KC_UNDS	,	KC_LBRC	,	KC_RBRC	,	KC_CIRC	,							KC_EXLM	,	KC_LT	,	KC_GT	,	KC_EQL	,	KC_AMPR	,	XXXXXXX	,	XXXXXXX	,
 			XXXXXXX	,	KC_SLSH	,	KC_MINS	,	KC_LCBR	,	KC_RCBR	,	KC_ASTR	,							KC_QUES	,	KC_LPRN	,	KC_RPRN	,	KC_QUOT	,	KC_COLN	,	XXXXXXX	,	XXXXXXX	,
-			XXXXXXX	,	KC_HASH	,	KC_DLR	,	KC_PIPE	,	KC_TILD	,	KC_GRV	,	XXXXXXX	,			XXXXXXX	,	KC_PLUS	,	KC_PERC	,	KC_BSLS	,	KC_AT	,	XXXXXXX	,	XXXXXXX	,
-	XXXXXXX	,							XXXXXXX	,	XXXXXXX	,	XXXXXXX	,	XXXXXXX	,	XXXXXXX	,	XXXXXXX	,	XXXXXXX	,	SYMBOL	,	XXXXXXX	,
-			XXXXXXX	,	XXXXXXX	,							XXXXXXX	,	XXXXXXX	,			XXXXXXX	,	XXXXXXX
+			XXXXXXX	,	KC_HASH	,	KC_DLR	,	KC_PIPE	,	KC_TILD	,	KC_GRV	,	XXXXXXX	,	XXXXXXX	,	KC_PLUS	,	KC_PERC	,	KC_BSLS	,	KC_AT	,	XXXXXXX	,	XXXXXXX	,
+	XXXXXXX	,						XXXXXXX	,	XXXXXXX	,	FUNCTN	,	MO(_NAV),		XXXXXXX	,			XXXXXXX	,	XXXXXXX	,	XXXXXXX	,	XXXXXXX	,
+			XXXXXXX	,	XXXXXXX	,							XXXXXXX	,	XXXXXXX	,							XXXXXXX	,	XXXXXXX
 ),
 
 [_NUMBER]=LAYOUT(   // Number
-			XXXXXXX	,	KC_F1	,	KC_F2	,	KC_F3	,	KC_F4	,	KC_F5	,							KC_F6	,	KC_F7	,	KC_F8	,	KC_F9	,	KC_F10	,	KC_F11	,	XXXXXXX	,
-			XXXXXXX	,	KC_1	,	KC_2	,	KC_3	,	KC_4	,	KC_LANG2,							KC_LANG1,	KC_7	,	KC_8	,	KC_9	,	KC_0	,	KC_F12	,	XXXXXXX	,
-			XXXXXXX	,	XXXXXXX	,	XXXXXXX	,	XXXXXXX	,	KC_5	,	XXXXXXX	,	XXXXXXX	,			XXXXXXX	,	XXXXXXX	,	KC_6	,	XXXXXXX	,	XXXXXXX	,	XXXXXXX	,	XXXXXXX	,
-	XXXXXXX	,							XXXXXXX	,	NUMBER	,	XXXXXXX	,	XXXXXXX	,	XXXXXXX	,	XXXXXXX	,	XXXXXXX	,	XXXXXXX	,	XXXXXXX	,
-			XXXXXXX	,	XXXXXXX	,							XXXXXXX	,	XXXXXXX	,			XXXXXXX	,	XXXXXXX
+			XXXXXXX	,	XXXXXXX	,	XXXXXXX	,	XXXXXXX	,	XXXXXXX	,	XXXXXXX	,							XXXXXXX	,	KC_7	,	KC_8	,	KC_9	,	KC_PERC	,	XXXXXXX	,	XXXXXXX	,
+			XXXXXXX	,	OS_CTL	,	OS_ALT	,	OS_GUI	,	OS_SFT	,	XXXXXXX	,							KC_0	,	KC_4	,	KC_5	,	KC_6	,	KC_ASTR	,	KC_SLSH	,	XXXXXXX	,
+			XXXXXXX	,	XXXXXXX	,	XXXXXXX	,	XXXXXXX	,	XXXXXXX	,	XXXXXXX	,	XXXXXXX	,	XXXXXXX	,	KC_EQL	,	KC_1	,	KC_2	,	KC_3	,	KC_PLUS	,	KC_MINS	,
+	XXXXXXX	,						XXXXXXX	,	XXXXXXX	,	XXXXXXX	,	MO(_NAV),		XXXXXXX	,			XXXXXXX	,	FUNCTN	,	XXXXXXX	,	XXXXXXX	,
+			XXXXXXX	,	XXXXXXX	,							XXXXXXX	,	XXXXXXX	,							XXXXXXX	,	XXXXXXX
+),
+
+[_FUNCTION]=LAYOUT(   // Function
+			XXXXXXX	,	XXXXXXX	,	XXXXXXX	,	XXXXXXX	,	XXXXXXX	,	XXXXXXX	,							XXXXXXX	,	KC_F7	,	KC_F8	,	KC_F9	,	KC_F12	,	XXXXXXX	,	XXXXXXX	,
+			XXXXXXX	,	OS_CTL	,	OS_ALT	,	OS_GUI	,	OS_SFT	,	XXXXXXX,							XXXXXXX,	KC_F4	,	KC_F5	,	KC_F6	,	KC_F11	,	XXXXXXX	,	XXXXXXX	,
+			XXXXXXX	,	XXXXXXX	,	XXXXXXX	,	XXXXXXX	,	XXXXXXX	,	XXXXXXX	,	XXXXXXX	,	XXXXXXX	,	XXXXXXX	,	KC_F1	,	KC_F2	,	KC_F3	,	KC_F10	,	XXXXXXX	,
+	XXXXXXX	,						XXXXXXX	,	XXXXXXX	,	XXXXXXX	,	XXXXXXX	,		XXXXXXX	,			XXXXXXX	,	XXXXXXX	,	XXXXXXX	,	XXXXXXX	,
+			XXXXXXX	,	XXXXXXX	,							XXXXXXX	,	XXXXXXX	,							XXXXXXX	,	XXXXXXX
 ),
 
 [_OPTION]=LAYOUT(  // Options
-			XXXXXXX	,	RGB_VAI	,	RGB_SAI	,	RGB_HUI	,	RGB_MOD	,	RGB_TOG	,							XXXXXXX	,	XXXXXXX	,	XXXXXXX	,	XXXXXXX	,	XXXXXXX	,	XXXXXXX	,	XXXXXXX	,
-			XXXXXXX	,	RGB_VAD	,	RGB_SAD	,	RGB_HUD	,	RGB_RMOD,	XXXXXXX	,							XXXXXXX	,	QWERTY	,	COLEMAK	,	XXXXXXX	,	XXXXXXX	,	XXXXXXX	,	XXXXXXX	,
-			XXXXXXX	,	XXXXXXX	,	XXXXXXX	,	XXXXXXX	,	XXXXXXX	,	XXXXXXX	,	XXXXXXX	,			XXXXXXX	,	RESET	,	XXXXXXX	,	XXXXXXX	,	XXXXXXX	,	XXXXXXX	,	XXXXXXX	,
-	_______	,							_______	,	_______	,	_______	,	_______	,	XXXXXXX	,	_______	,	_______	,	_______	,	_______	,
-			_______	,	_______	,							_______	,	_______	,			_______	,	_______
+			XXXXXXX	,	XXXXXXX	,	XXXXXXX	,	XXXXXXX	,	XXXXXXX	,	XXXXXXX	,							XXXXXXX	,	XXXXXXX	,	XXXXXXX	,	XXXXXXX	,	XXXXXXX	,	XXXXXXX	,	XXXXXXX	,
+			XXXXXXX	,	XXXXXXX	,	XXXXXXX	,	XXXXXXX	,	XXXXXXX	,	XXXXXXX	,							RGB_TOG	,	RGB_MOD	,	RGB_HUI	,	RGB_SAI	,	RGB_VAI	,	XXXXXXX	,	XXXXXXX	,
+			XXXXXXX	,	XXXXXXX	,	XXXXXXX	,	XXXXXXX	,	XXXXXXX	,	XXXXXXX	,	XXXXXXX	,	XXXXXXX	,	RESET	,	RGB_RMOD,	RGB_HUD	,	RGB_SAD	,	RGB_VAD	,	XXXXXXX	,
+	XXXXXXX	,						XXXXXXX	,	XXXXXXX	,	XXXXXXX	,	XXXXXXX	,		XXXXXXX	,			XXXXXXX	,	XXXXXXX	,	XXXXXXX	,	XXXXXXX	,
+			XXXXXXX	,	XXXXXXX	,							XXXXXXX	,	XXXXXXX	,							XXXXXXX	,	XXXXXXX
 )
 
 };
@@ -123,32 +140,18 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 typedef const uint16_t comb_keys_t[];
 
 static PROGMEM comb_keys_t
-    // QWERTY
-    comb_keys_QwKana = {KC_H, KC_J, COMBO_END},
-    comb_keys_QwEisu = {KC_F, KC_G, COMBO_END},
-    comb_keys_QwEsc  = {KC_D, KC_F, COMBO_END},
-    comb_keys_QwTab  = {KC_U, KC_I, COMBO_END},
-    comb_keys_QwSTab = {KC_I, KC_O, COMBO_END},
-    comb_keys_QwBksp = {KC_J, KC_K, COMBO_END},
-    comb_keys_QwABsp = {KC_J, KC_K, KC_L, COMBO_END},
-    comb_keys_QwDel  = {KC_K, KC_L, COMBO_END},
-    // ColemakDH
-    comb_keys_CmKana = {KC_M, KC_N, COMBO_END},
-    comb_keys_CmEisu = {KC_T, KC_G, COMBO_END},
-    comb_keys_CmEsc  = {KC_S, KC_T, COMBO_END};
+    comb_keys_Kana = {KC_M, KC_N, COMBO_END},
+    comb_keys_Eisu = {KC_T, KC_G, COMBO_END},
+    comb_keys_Tab  = {KC_N, KC_E, COMBO_END},
+    comb_keys_STab = {KC_E, KC_I, COMBO_END},
+    comb_keys_Esc  = {KC_S, KC_T, COMBO_END};
 
 combo_t key_combos[COMBO_COUNT] = {
-    COMBO(comb_keys_QwKana, KC_LANG1),
-    COMBO(comb_keys_QwEisu, KC_LANG2),
-    COMBO(comb_keys_QwEsc,  KC_ESC),
-    COMBO(comb_keys_QwTab,  KC_TAB),
-    COMBO(comb_keys_QwSTab, LSFT(KC_TAB)),
-    COMBO(comb_keys_QwBksp, KC_BSPC),
-    COMBO(comb_keys_QwABsp, LALT(KC_BSPC)),
-    COMBO(comb_keys_QwDel,  KC_DEL),
-    COMBO(comb_keys_CmKana, KC_LANG1),
-    COMBO(comb_keys_CmEisu, KC_LANG2),
-    COMBO(comb_keys_CmEsc,  KC_ESC),
+    COMBO(comb_keys_Kana, KC_LANG1),
+    COMBO(comb_keys_Eisu, KC_LANG2),
+    COMBO(comb_keys_Tab,  KC_TAB),
+    COMBO(comb_keys_STab, LSFT(KC_TAB)),
+    COMBO(comb_keys_Esc,  KC_ESC),
 };
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
