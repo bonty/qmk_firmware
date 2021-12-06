@@ -10,8 +10,7 @@
 // Layer names don't all need to be of the same length, obviously, and you can also skip them
 // entirely and just use numbers.
 enum layer_names {
-    _QWERTY = 0,
-    _COLEMAK,
+    _COLEMAK = 0,
     _NAV,
     _SYMBOL,
     _NUMBER,
@@ -20,7 +19,6 @@ enum layer_names {
 };
 
 // Mod-Tap Modifiers
-#define CTLESC CTL_T(KC_ESC)
 #define SFTENT SFT_T(KC_ENT)
 
 // Mod-Tap Layers
@@ -59,23 +57,7 @@ enum layer_names {
 #define FW_LINE LGUI(KC_RGHT)
 #define BK_LINE LGUI(KC_LEFT)
 
-// Layout
-#define QWERTY DF(_QWERTY)
-#define COLEMAK DF(_COLEMAK)
-
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
-  [_QWERTY] = LAYOUT( \
-  //,---------------------------------------.                  ,---------------------------------------.
-        KC_Q,   KC_W,   KC_E,   KC_R,   KC_T,                      KC_Y,   KC_U,   KC_I,   KC_O,   KC_P,\
-  //|-------+-------+-------+-------+-------|                  |-------+-------+-------+-------+-------|
-        KC_A,   KC_S,   KC_D,   KC_F,   KC_G,                      KC_H,   KC_J,   KC_K,   KC_L,KC_SCLN,\
-  //|-------+-------+-------+-------+-------|                  |-------+-------+-------+-------+-------|
-        KC_Z,   KC_X,   KC_C,   KC_V,   KC_B,                      KC_N,   KC_M,KC_COMM, KC_DOT,KC_SLSH,\
-  //|-------+-------+-------+-------+-------+-------|  |-------+-------+-------+-------+-------+-------|
-      KC_TAB, OS_CTL, OS_ALT, OS_GUI, NUMBER, MT_SPC,    SFTENT, SYMBOL, OS_CTL, OS_ALT, OS_GUI, OS_SFT\
-  //|-------+-------+-------+-------+-------+-------|  |-------+-------+-------+-------+-------+-------|
-  ),
-
   [_COLEMAK] = LAYOUT( \
   //,---------------------------------------.                  ,---------------------------------------.
         KC_Q,   KC_W,   KC_F,   KC_P,   KC_B,                      KC_J,   KC_L,   KC_U,   KC_Y,KC_SCLN,\
@@ -84,7 +66,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|-------+-------+-------+-------+-------|                  |-------+-------+-------+-------+-------|
         KC_Z,   KC_X,   KC_C,   KC_D,   KC_V,                      KC_K,   KC_H,KC_COMM, KC_DOT,KC_SLSH,\
   //|-------+-------+-------+-------+-------+-------|  |-------+-------+-------+-------+-------+-------|
-     _______,_______,_______,_______,_______,_______,   _______,_______,_______,_______,_______,_______ \
+      KC_TAB, OS_CTL, OS_ALT, OS_GUI, NUMBER, MT_SPC,    SFTENT, SYMBOL, OS_CTL, OS_ALT, OS_GUI, OS_SFT\
   //|-------+-------+-------+-------+-------+-------|  |-------+-------+-------+-------+-------+-------|
   ),
 
@@ -140,7 +122,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //,---------------------------------------.                  ,---------------------------------------.
      XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX,                   XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX,\
   //|-------+-------+-------+-------+-------|                  |-------+-------+-------+-------+-------|
-     XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX,                   XXXXXXX, QWERTY,COLEMAK,XXXXXXX,XXXXXXX,\
+     XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX,                   XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX,\
   //|-------+-------+-------+-------+-------|                  |-------+-------+-------+-------+-------|
      XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX,                     RESET,XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX,\
   //|-------+-------+-------+-------+-------+-------|  |-------+-------+-------+-------+-------+-------|
@@ -153,20 +135,16 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 typedef const uint16_t comb_keys_t[];
 
 static PROGMEM comb_keys_t
-    // QWERTY
-    comb_keys_QwKana = {KC_H, KC_J, COMBO_END},
-    comb_keys_QwEisu = {KC_F, KC_G, COMBO_END},
-    comb_keys_QwEsc  = {KC_D, KC_F, COMBO_END},
-    // ColemakDH
-    comb_keys_CmKana = {KC_M, KC_N, COMBO_END},
-    comb_keys_CmEisu = {KC_T, KC_G, COMBO_END},
-    comb_keys_CmEsc  = {KC_S, KC_T, COMBO_END};
+    comb_keys_Kana = {KC_M, KC_N, COMBO_END},
+    comb_keys_Eisu = {KC_T, KC_G, COMBO_END},
+    comb_keys_Tab  = {KC_N, KC_E, COMBO_END},
+    comb_keys_STab = {KC_E, KC_I, COMBO_END},
+    comb_keys_Esc  = {KC_S, KC_T, COMBO_END};
 
 combo_t key_combos[COMBO_COUNT] = {
-    COMBO(comb_keys_QwKana, KC_LANG1),
-    COMBO(comb_keys_QwEisu, KC_LANG2),
-    COMBO(comb_keys_QwEsc,  KC_ESC),
-    COMBO(comb_keys_CmKana, KC_LANG1),
-    COMBO(comb_keys_CmEisu, KC_LANG2),
-    COMBO(comb_keys_CmEsc,  KC_ESC),
+    COMBO(comb_keys_Kana, KC_LANG1),
+    COMBO(comb_keys_Eisu, KC_LANG2),
+    COMBO(comb_keys_Tab,  KC_TAB),
+    COMBO(comb_keys_STab, LSFT(KC_TAB)),
+    COMBO(comb_keys_Esc,  KC_ESC),
 };
