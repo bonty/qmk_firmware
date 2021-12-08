@@ -10,6 +10,9 @@ enum layer_names {
     _OPTION
 };
 
+// Mod-Tap Modifiers
+#define SFTENT SFT_T(KC_ENT)
+
 // Mod-Tap Layers
 #define MT_SPC LT(_NAV, KC_SPC)
 
@@ -61,42 +64,42 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [_COLEMAK] = LAYOUT_reviung41(
     KC_TAB,   KC_Q,     KC_W,     KC_F,     KC_P,      KC_B,               KC_J,     KC_L,     KC_U,     KC_Y,     KC_SCLN,  KC_BSPC,
     OS_CTL,   KC_A,     KC_R,     KC_S,     KC_T,      KC_G,               KC_M,     KC_N,     KC_E,     KC_I,     KC_O,     KC_ENT,
-    OS_SFT,   KC_Z,     KC_X,     KC_C,     KC_D,      KC_V,               KC_K,     KC_H,     KC_COMM,  KC_DOT,   KC_SLSH,  OS_SFT,
-                                            OS_GUI,    NUMBER,   MT_SPC,   SYMBOL,   OS_ALT
+    OS_GUI,   KC_Z,     KC_X,     KC_C,     KC_D,      KC_V,               KC_K,     KC_H,     KC_COMM,  KC_DOT,   KC_SLSH,  OS_ALT,
+                                            NUMBER,    MT_SPC,   OS_CTL,   SFTENT,   SYMBOL
   ),
 
   [_NAV] = LAYOUT_reviung41(
-    OPTION,   XXXXXXX,  XXXXXXX,  BS_WORD,  DE_WORD,   BS_LINE,            FW_LINE,  BK_WORD,  KC_UP,    FW_WORD,  KC_PGUP,   XXXXXXX,
-    XXXXXXX,  XXXXXXX,  XXXXXXX,  KC_BSPC,  KC_DEL,    DE_LINE,            BK_LINE,  KC_LEFT,  KC_DOWN,  KC_RGHT,  KC_PGDN,   XXXXXXX,
-    XXXXXXX,  UNDO,     CUT,      COPY,     PASTE,     REDO,               HISTBK,   PREVTAB,  NEXTTAB,  HISTFW,   XXXXXXX,   XXXXXXX,
-                                            XXXXXXX,   XXXXXXX,  XXXXXXX,  KC_LSFT,  KC_LALT
+    OPTION,   XXXXXXX,  XXXXXXX,  BS_WORD,  DE_WORD,   BS_LINE,            FW_LINE,  BK_WORD,  KC_UP,    FW_WORD,  KC_PGUP,   _______,
+    _______,  XXXXXXX,  XXXXXXX,  KC_BSPC,  KC_DEL,    DE_LINE,            BK_LINE,  KC_LEFT,  KC_DOWN,  KC_RGHT,  KC_PGDN,   _______,
+    _______,  UNDO,     CUT,      COPY,     PASTE,     REDO,               HISTBK,   PREVTAB,  NEXTTAB,  HISTFW,   XXXXXXX,   _______,
+                                            _______,   _______,  _______,  KC_LSFT,  KC_LALT
   ),
 
   [_SYMBOL] = LAYOUT_reviung41(
-    XXXXXXX,  KC_DQUO,  KC_UNDS,  KC_LBRC,  KC_RBRC,   KC_CIRC,            KC_EXLM,  KC_LT,    KC_GT,    KC_EQL,   KC_AMPR,  XXXXXXX,
-    XXXXXXX,  KC_SLSH,  KC_MINS,  KC_LCBR,  KC_RCBR,   KC_ASTR,            KC_QUES,  KC_LPRN,  KC_RPRN,  KC_QUOT,  KC_COLN,  XXXXXXX,
-    XXXXXXX,  KC_HASH,  KC_DLR,   KC_PIPE,  KC_TILD,   KC_GRV,             KC_PLUS,  KC_PERC,  KC_BSLS,  KC_AT,    XXXXXXX,  XXXXXXX,
-                                            XXXXXXX,   FUNCTN,   XXXXXXX,  XXXXXXX,  XXXXXXX
+    _______,  KC_DQUO,  KC_UNDS,  KC_LBRC,  KC_RBRC,   KC_CIRC,            KC_EXLM,  KC_LT,    KC_GT,    KC_EQL,   KC_AMPR,  _______,
+    _______,  KC_SLSH,  KC_MINS,  KC_LCBR,  KC_RCBR,   KC_ASTR,            KC_QUES,  KC_LPRN,  KC_RPRN,  KC_QUOT,  KC_COLN,  _______,
+    _______,  KC_HASH,  KC_DLR,   KC_PIPE,  KC_TILD,   KC_GRV,             KC_PLUS,  KC_PERC,  KC_BSLS,  KC_AT,    XXXXXXX,  _______,
+                                            FUNCTN,    _______,  _______,  _______,  _______
   ),
 
   [_NUMBER] = LAYOUT_reviung41(
     XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,   XXXXXXX,            XXXXXXX,  KC_7,     KC_8,     KC_9,     KC_PERC,  XXXXXXX,
     XXXXXXX,  OS_CTL,   OS_ALT,   OS_GUI,   OS_SFT,    XXXXXXX,            KC_0,     KC_4,     KC_5,     KC_6,     KC_ASTR,  KC_SLSH,
     XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,   XXXXXXX,            XXXXXXX,  KC_1,     KC_2,     KC_3,     KC_PLUS,  KC_MINS,
-                                            XXXXXXX,   XXXXXXX,  XXXXXXX,  FUNCTN,   XXXXXXX
+                                            _______,   _______,  _______,  _______,  FUNCTN
   ),
 
   [_FUNCTION] = LAYOUT_reviung41(
     XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,   XXXXXXX,            XXXXXXX,  KC_F7,    KC_F8,    KC_F9,    KC_F12,   XXXXXXX,
     XXXXXXX,  OS_CTL,   OS_ALT,   OS_GUI,   OS_SFT,    XXXXXXX,            XXXXXXX,  KC_F4,    KC_F5,    KC_F6,    KC_F11,   XXXXXXX,
     XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,   XXXXXXX,            XXXXXXX,  KC_F1,    KC_F2,    KC_F3,    KC_F10,   XXXXXXX,
-                                            XXXXXXX,   XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX
+                                            _______,   _______,  _______,  _______,  _______
   ),
 
   [_OPTION] = LAYOUT_reviung41(
-    RGB_VAI,   RGB_SAI, RGB_HUI,  RGB_MOD,  XXXXXXX,   RGB_TOG,            XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,
-    RGB_VAD,   RGB_SAD, RGB_HUD,  RGB_RMOD, XXXXXXX,   XXXXXXX,            XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,
-    XXXXXXX,   XXXXXXX, XXXXXXX,  XXXXXXX,  XXXXXXX,   XXXXXXX,            RESET,    XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,
+    XXXXXXX,  RGB_VAI,  RGB_SAI,  RGB_HUI,  RGB_MOD,   RGB_TOG,            XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,
+    XXXXXXX,  RGB_VAD,  RGB_SAD,  RGB_HUD,  RGB_RMOD,  XXXXXXX,            XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,
+    XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,   XXXXXXX,            RESET,    XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,
                                             XXXXXXX,   XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX
   ),
 };
