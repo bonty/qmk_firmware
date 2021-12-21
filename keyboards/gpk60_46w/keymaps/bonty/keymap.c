@@ -19,10 +19,11 @@
 enum layer_names {
 //   _QWERTY,
     _COLEMAK,
-    _NAV,
     _SYMBOL,
     _NUMBER,
     _FUNCTION,
+    _NAV,
+    _WINNAV,
     _OPTION,
 };
 
@@ -35,9 +36,10 @@ enum layer_names {
 #define MT_SPC LT(_NAV, KC_SPC)
 
 // Layers
+#define SYMBOL OSL(_SYMBOL)
 #define NUMBER OSL(_NUMBER)
 #define FUNCTN MO(_FUNCTION)
-#define SYMBOL OSL(_SYMBOL)
+#define WINNAV MO(_WINNAV)
 #define OPTION OSL(_OPTION)
 
 // OneShot Modifiers
@@ -68,19 +70,27 @@ enum layer_names {
 #define FW_LINE LGUI(KC_RGHT)
 #define BK_LINE LGUI(KC_LEFT)
 
+// Yabai Shortcuts
+#define WARP_PR LSFT(KC_F13)
+#define WARP_NT LSFT(KC_F14)
+#define STCK_PR LSFT(KC_F15)
+#define STCK_NT LSFT(KC_F16)
+#define SEND_PR LSFT(KC_F17)
+#define SEND_NT LSFT(KC_F18)
+#define ROT_PRV LALT(LSFT(KC_F13))
+#define ROT_NXT LALT(LSFT(KC_F14))
+#define MIRROR LALT(LSFT(KC_F15))
+#define BALANCE LALT(LSFT(KC_F16))
+#define RESIZEL LALT(LSFT(KC_F17))
+#define RESIZER LALT(LSFT(KC_F18))
+#define Y_RESET LCTL(LALT(LGUI(KC_F19)))
+
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_COLEMAK] = LAYOUT(
         KC_TAB,  KC_Q,    KC_W,    KC_F,    KC_P,    KC_B,                      KC_J,    KC_L,    KC_U,    KC_Y,    KC_SCLN, KC_BSPC, \
         CTLESC,  KC_A,    KC_R,    KC_S,    KC_T,    KC_G,                      KC_M,    KC_N,    KC_E,    KC_I,    KC_O,    GUIENT, \
         OS_SFT,  KC_Z,    KC_X,    KC_C,    KC_D,    KC_V,    KC_LBRC, KC_RBRC, KC_K,    KC_H,    KC_COMM, KC_DOT,  KC_SLSH, OS_SFT, \
                                    OS_ALT,  OS_GUI,  NUMBER,  MT_SPC,  SFTENT,  SYMBOL,  OS_CTL,  OS_MEH \
-    ),
-
-    [_NAV] = LAYOUT(
-        OPTION,  XXXXXXX, XXXXXXX, BS_WORD, DE_WORD, BS_LINE,                   FW_LINE, BK_WORD, KC_UP,   FW_WORD, KC_PGUP, XXXXXXX, \
-        XXXXXXX, XXXXXXX, XXXXXXX, KC_BSPC, KC_DEL,  DE_LINE,                   BK_LINE, KC_LEFT, KC_DOWN, KC_RGHT, KC_PGDN, XXXXXXX, \
-        XXXXXXX, UNDO,    CUT,     COPY,    PASTE,   REDO,    KC_LBRC, KC_RBRC, HISTBK,  PREVTAB, NEXTTAB, HISTFW,  XXXXXXX, XXXXXXX, \
-                                   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_LSFT, KC_LALT, KC_LCTL, _______ \
     ),
 
     [_SYMBOL] = LAYOUT(
@@ -104,9 +114,23 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX \
     ),
 
+    [_NAV] = LAYOUT(
+        OPTION,  XXXXXXX, XXXXXXX, BS_WORD, DE_WORD, BS_LINE,                   FW_LINE, BK_WORD, KC_UP,   FW_WORD, KC_PGUP, XXXXXXX, \
+        XXXXXXX, XXXXXXX, XXXXXXX, KC_BSPC, KC_DEL,  DE_LINE,                   BK_LINE, KC_LEFT, KC_DOWN, KC_RGHT, KC_PGDN, XXXXXXX, \
+        XXXXXXX, UNDO,    CUT,     COPY,    PASTE,   REDO,    XXXXXXX, XXXXXXX, HISTBK,  PREVTAB, NEXTTAB, HISTFW,  XXXXXXX, XXXXXXX, \
+                                   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_LSFT, WINNAV,  KC_LCTL, XXXXXXX \
+    ),
+
+    [_WINNAV] = LAYOUT(
+        XXXXXXX, Y_RESET, XXXXXXX, ROT_PRV, ROT_NXT, XXXXXXX,                   XXXXXXX, WARP_PR, WARP_NT, STCK_PR, SEND_PR, XXXXXXX, \
+        XXXXXXX, XXXXXXX, XXXXXXX, MIRROR,  BALANCE, XXXXXXX,                   KC_F19,  KC_F13,  KC_F14,  STCK_NT, SEND_NT, XXXXXXX, \
+        XXXXXXX, XXXXXXX, XXXXXXX, RESIZEL, RESIZER, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_F17,  KC_F18,  XXXXXXX, XXXXXXX, XXXXXXX, \
+                                   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX \
+    ),
+
     [_OPTION] = LAYOUT(
-        RGB_VAI, RGB_SAI, RGB_HUI, RGB_MOD, XXXXXXX, RGB_TOG,                   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, \
-        RGB_VAD, RGB_SAD, RGB_HUD, RGB_RMOD,XXXXXXX, XXXXXXX,                   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, \
+        XXXXXXX, RGB_VAI, RGB_SAI, RGB_HUI, RGB_MOD, RGB_TOG,                   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, \
+        XXXXXXX, RGB_VAD, RGB_SAD, RGB_HUD, RGB_RMOD,XXXXXXX,                   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, \
         XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, RESET,   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, \
                                    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX \
     )
