@@ -11,10 +11,11 @@
 // entirely and just use numbers.
 enum layer_names {
     _COLEMAK = 0,
-    _NAV,
     _SYMBOL,
     _NUMBER,
     _FUNCTION,
+    _NAV,
+    _WINNAV,
     _OPTION
 };
 
@@ -28,6 +29,7 @@ enum layer_names {
 #define NUMBER OSL(_NUMBER)
 #define FUNCTN MO(_FUNCTION)
 #define SYMBOL OSL(_SYMBOL)
+#define WINNAV MO(_WINNAV)
 #define OPTION OSL(_OPTION)
 
 // OneShot Modifiers
@@ -57,6 +59,21 @@ enum layer_names {
 #define FW_LINE LGUI(KC_RGHT)
 #define BK_LINE LGUI(KC_LEFT)
 
+// Yabai Shortcuts
+#define WARP_PR LSFT(KC_F13)
+#define WARP_NT LSFT(KC_F14)
+#define STCK_PR LSFT(KC_F15)
+#define STCK_NT LSFT(KC_F16)
+#define SEND_PR LSFT(KC_F17)
+#define SEND_NT LSFT(KC_F18)
+#define ROT_PRV LALT(LSFT(KC_F13))
+#define ROT_NXT LALT(LSFT(KC_F14))
+#define MIRROR LALT(LSFT(KC_F15))
+#define BALANCE LALT(LSFT(KC_F16))
+#define RESIZEL LALT(LSFT(KC_F17))
+#define RESIZER LALT(LSFT(KC_F18))
+#define Y_RESET LCTL(LALT(LGUI(KC_F19)))
+
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [_COLEMAK] = LAYOUT( \
   //,---------------------------------------.                  ,---------------------------------------.
@@ -66,19 +83,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|-------+-------+-------+-------+-------|                  |-------+-------+-------+-------+-------|
         KC_Z,   KC_X,   KC_C,   KC_D,   KC_V,                      KC_K,   KC_H,KC_COMM, KC_DOT,KC_SLSH,\
   //|-------+-------+-------+-------+-------+-------|  |-------+-------+-------+-------+-------+-------|
-      KC_TAB, OS_CTL, OS_ALT, OS_GUI, NUMBER, MT_SPC,    SFTENT, SYMBOL, OS_CTL, OS_ALT, OS_GUI, OS_SFT\
-  //|-------+-------+-------+-------+-------+-------|  |-------+-------+-------+-------+-------+-------|
-  ),
-
-  [_NAV] = LAYOUT( \
-  //,---------------------------------------.                  ,---------------------------------------.
-     XXXXXXX,XXXXXXX,BS_WORD,DE_WORD,BS_LINE,                   FW_LINE,BK_WORD,  KC_UP,FW_WORD,KC_PGUP,\
-  //|-------+-------+-------+-------+-------|                  |-------+-------+-------+-------+-------|
-     XXXXXXX,XXXXXXX,KC_BSPC, KC_DEL,DE_LINE,                   BK_LINE,KC_LEFT,KC_DOWN,KC_RGHT,KC_PGDN,\
-  //|-------+-------+-------+-------+-------|                  |-------+-------+-------+-------+-------|
-        UNDO,    CUT,   COPY,  PASTE,   REDO,                    HISTBK,PREVTAB,NEXTTAB, HISTFW,XXXXXXX,\
-  //|-------+-------+-------+-------+-------+-------|  |-------+-------+-------+-------+-------+-------|
-      OPTION,_______,_______,_______,_______,_______,   KC_LSFT,KC_LALT,_______,_______,_______,_______ \
+      OS_SFT, OS_CTL, OS_ALT, NUMBER, MT_SPC, OS_GUI,    OS_CTL, SFTENT, SYMBOL, OS_ALT, OS_GUI, OS_SFT\
   //|-------+-------+-------+-------+-------+-------|  |-------+-------+-------+-------+-------+-------|
   ),
 
@@ -90,7 +95,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|-------+-------+-------+-------+-------|                  |-------+-------+-------+-------+-------|
      KC_HASH, KC_DLR,KC_PIPE,KC_TILD, KC_GRV,                   KC_PLUS,KC_PERC,KC_BSLS,  KC_AT,XXXXXXX,\
   //|-------+-------+-------+-------+-------+-------|  |-------+-------+-------+-------+-------+-------|
-     _______,_______,_______,_______, FUNCTN,_______,   _______,_______,_______,_______,_______,_______ \
+     _______,_______,_______, FUNCTN,_______,_______,   _______,_______,_______,_______,_______,_______ \
   //|-------+-------+-------+-------+-------+-------|  |-------+-------+-------+-------+-------+-------|
   ),
 
@@ -102,7 +107,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|-------+-------+-------+-------+-------|                  |-------+-------+-------+-------+-------|
      XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX,                   KC_MINS,   KC_1,   KC_2,   KC_3,KC_PLUS,\
   //|-------+-------+-------+-------+-------+-------|  |-------+-------+-------+-------+-------+-------|
-     _______,_______,_______,_______,_______,_______,   _______, FUNCTN,_______,_______,_______,_______ \
+     _______,_______,_______,_______,_______,_______,   _______,_______, FUNCTN,_______,_______,_______ \
   //|-------+-------+-------+-------+-------+-------|  |-------+-------+-------+-------+-------+-------|
   ),
 
@@ -113,6 +118,30 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
       OS_CTL, OS_ALT, OS_GUI, OS_SFT,XXXXXXX,                   XXXXXXX,  KC_F4,  KC_F5,  KC_F6, KC_F11,\
   //|-------+-------+-------+-------+-------|                  |-------+-------+-------+-------+-------|
      XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX,                   XXXXXXX,  KC_F1,  KC_F2,  KC_F3, KC_F10,\
+  //|-------+-------+-------+-------+-------+-------|  |-------+-------+-------+-------+-------+-------|
+     _______,_______,_______,_______,_______,_______,   _______,_______,_______,_______,_______,_______ \
+  //|-------+-------+-------+-------+-------+-------|  |-------+-------+-------+-------+-------+-------|
+  ),
+
+  [_NAV] = LAYOUT( \
+  //,---------------------------------------.                  ,---------------------------------------.
+     XXXXXXX,XXXXXXX,BS_WORD,DE_WORD,BS_LINE,                   FW_LINE,BK_WORD,  KC_UP,FW_WORD,KC_PGUP,\
+  //|-------+-------+-------+-------+-------|                  |-------+-------+-------+-------+-------|
+     XXXXXXX,XXXXXXX,KC_BSPC, KC_DEL,DE_LINE,                   BK_LINE,KC_LEFT,KC_DOWN,KC_RGHT,KC_PGDN,\
+  //|-------+-------+-------+-------+-------|                  |-------+-------+-------+-------+-------|
+        UNDO,    CUT,   COPY,  PASTE,   REDO,                    HISTBK,PREVTAB,NEXTTAB, HISTFW,XXXXXXX,\
+  //|-------+-------+-------+-------+-------+-------|  |-------+-------+-------+-------+-------+-------|
+      OPTION,_______,_______,_______,_______,_______,   KC_LSFT, WINNAV,_______,_______,_______,_______ \
+  //|-------+-------+-------+-------+-------+-------|  |-------+-------+-------+-------+-------+-------|
+  ),
+
+  [_WINNAV] = LAYOUT( \
+  //,---------------------------------------.                  ,---------------------------------------.
+     Y_RESET,XXXXXXX,ROT_PRV,ROT_NXT,XXXXXXX,                   XXXXXXX,WARP_PR,WARP_NT,STCK_PR,SEND_PR,\
+  //|-------+-------+-------+-------+-------|                  |-------+-------+-------+-------+-------|
+     XXXXXXX,XXXXXXX, MIRROR,BALANCE,XXXXXXX,                    KC_F19, KC_F13, KC_F14,STCK_NT,SEND_NT,\
+  //|-------+-------+-------+-------+-------|                  |-------+-------+-------+-------+-------|
+     XXXXXXX,XXXXXXX,RESIZEL,RESIZER,XXXXXXX,                   XXXXXXX, KC_F17, KC_F18,XXXXXXX,XXXXXXX,\
   //|-------+-------+-------+-------+-------+-------|  |-------+-------+-------+-------+-------+-------|
      _______,_______,_______,_______,_______,_______,   _______,_______,_______,_______,_______,_______ \
   //|-------+-------+-------+-------+-------+-------|  |-------+-------+-------+-------+-------+-------|
