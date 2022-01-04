@@ -156,7 +156,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define ENCODER_RESOLUTIONS { 4,4,4 }
 
 #define AUTO_SHIFT_TIMEOUT 190
-#define TAPPING_TERM 200
+#define TAPPING_TERM 185
 #define PERMISSIVE_HOLD
 //#define RETRO_TAPPING
 //#define TAPPING_FORCE_HOLD
@@ -165,7 +165,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #define RGBLIGHT_LAYERS
 #define RGBLIGHT_MAX_LAYERS 8
-#define DYNAMIC_KEYMAP_LAYER_COUNT 6
+#define DYNAMIC_KEYMAP_LAYER_COUNT 7
 
 
 #define TAP_MOD_DELAY  10

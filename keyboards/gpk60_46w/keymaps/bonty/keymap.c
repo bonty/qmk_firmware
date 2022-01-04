@@ -90,21 +90,21 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_TAB,  KC_Q,    KC_W,    KC_F,    KC_P,    KC_B,                      KC_J,    KC_L,    KC_U,    KC_Y,    KC_SCLN, KC_BSPC, \
         CTLESC,  KC_A,    KC_R,    KC_S,    KC_T,    KC_G,                      KC_M,    KC_N,    KC_E,    KC_I,    KC_O,    GUIENT, \
         OS_SFT,  KC_Z,    KC_X,    KC_C,    KC_D,    KC_V,    KC_LBRC, KC_RBRC, KC_K,    KC_H,    KC_COMM, KC_DOT,  KC_SLSH, OS_SFT, \
-                                   OS_ALT,  OS_GUI,  NUMBER,  MT_SPC,  SFTENT,  SYMBOL,  OS_CTL,  OS_MEH \
+                                   OS_ALT,  NUMBER,  MT_SPC,  OS_GUI,  OS_CTL,  SFTENT,  SYMBOL,  OS_MEH \
     ),
 
     [_SYMBOL] = LAYOUT(
         XXXXXXX, KC_DQUO, KC_UNDS, KC_LBRC, KC_RBRC, KC_CIRC,                   KC_EXLM, KC_LT,   KC_GT,   KC_EQL,  KC_AMPR, XXXXXXX, \
         XXXXXXX, KC_SLSH, KC_MINS, KC_LCBR, KC_RCBR, KC_ASTR,                   KC_QUES, KC_LPRN, KC_RPRN, KC_QUOT, KC_COLN, XXXXXXX, \
         XXXXXXX, KC_HASH, KC_DLR,  KC_PIPE, KC_TILD, KC_GRV,  XXXXXXX, XXXXXXX, KC_PLUS, KC_PERC, KC_BSLS, KC_AT,   XXXXXXX, XXXXXXX, \
-                                   XXXXXXX, XXXXXXX, FUNCTN,  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX \
+                                   XXXXXXX, FUNCTN,  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX \
     ),
 
     [_NUMBER] = LAYOUT(
         XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                   XXXXXXX, KC_7,    KC_8,    KC_9,    KC_PERC, XXXXXXX, \
         XXXXXXX, OS_CTL,  OS_ALT,  OS_GUI,  OS_SFT,  XXXXXXX,                   KC_0,    KC_4,    KC_5,    KC_6,    KC_ASTR, KC_SLSH, \
         XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_1,    KC_2,    KC_3,    KC_PLUS, KC_MINS, \
-                                   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, FUNCTN,  XXXXXXX, XXXXXXX \
+                                   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, FUNCTN,  XXXXXXX \
     ),
 
     [_FUNCTION] = LAYOUT(
@@ -118,7 +118,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         OPTION,  XXXXXXX, XXXXXXX, BS_WORD, DE_WORD, BS_LINE,                   FW_LINE, BK_WORD, KC_UP,   FW_WORD, KC_PGUP, XXXXXXX, \
         XXXXXXX, XXXXXXX, XXXXXXX, KC_BSPC, KC_DEL,  DE_LINE,                   BK_LINE, KC_LEFT, KC_DOWN, KC_RGHT, KC_PGDN, XXXXXXX, \
         XXXXXXX, UNDO,    CUT,     COPY,    PASTE,   REDO,    XXXXXXX, XXXXXXX, HISTBK,  PREVTAB, NEXTTAB, HISTFW,  XXXXXXX, XXXXXXX, \
-                                   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_LSFT, WINNAV,  KC_LCTL, XXXXXXX \
+                                   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_LCTL, WINNAV,  KC_LSFT, XXXXXXX \
     ),
 
     [_WINNAV] = LAYOUT(
