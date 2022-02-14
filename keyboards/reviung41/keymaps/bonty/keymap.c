@@ -47,8 +47,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [_QWERTY] = LAYOUT_reviung41(
     ALTTAB,   KC_Q,     KC_W,     KC_E,     KC_R,      KC_T,               KC_Y,     KC_U,     KC_I,     KC_O,     KC_P,     KC_BSPC,
     CTLBSP,   KC_A,     KC_S,     KC_D,     KC_F,      KC_G,               KC_H,     KC_J,     KC_K,     KC_L,     KC_SCLN,  KC_ENT,
-    OS_GUI,   KC_Z,     KC_X,     KC_C,     KC_V,      KC_B,               KC_N,     KC_M,     KC_COMM,  KC_DOT,   KC_SLSH,  OS_SFT,
-                                            NUMBER,    MT_SPC,   CTLBSP,   SFTENT,   SYMBOL
+    OS_SFT,   KC_Z,     KC_X,     KC_C,     KC_V,      KC_B,               KC_N,     KC_M,     KC_COMM,  KC_DOT,   KC_SLSH,  OS_SFT,
+                                            NUMBER,    MT_SPC,   OS_GUI,   SFTENT,   SYMBOL
   ),
 
   [_SYMBOL] = LAYOUT_reviung41(
@@ -76,7 +76,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     XXXXXXX,  XXXXXXX,  XXXXXXX,  BS_WORD,  DE_WORD,   BS_LINE,            KC_HOME,  KC_PGDN,  KC_PGUP,  KC_END,   HISTFW,    XXXXXXX,
     KC_LCTL,  KC_LALT,  KC_LGUI,  KC_BSPC,  KC_DEL,    KC_LSFT,            KC_LEFT,  KC_DOWN,  KC_UP,    KC_RGHT,  HISTBK,    XXXXXXX,
     XXXXXXX,  UNDO,     CUT,      COPY,     PASTE,     REDO,               HISTBK,   PREVTAB,  NEXTTAB,  HISTFW,   XXXXXXX,   XXXXXXX,
-                                            XXXXXXX,   XXXXXXX,  XXXXXXX,  XXXXXXX,  KC_LALT
+                                            XXXXXXX,   XXXXXXX,  XXXXXXX,  KC_LALT,  XXXXXXX
   ),
 };
 
