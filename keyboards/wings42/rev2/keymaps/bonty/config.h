@@ -24,3 +24,11 @@
 // Combos
 #define COMBO_TERM 50
 #define COMBO_COUNT 5
+
+// for light compile
+#undef LOCKING_SUPPORT_ENABLE
+#undef LOCKING_RESYNC_ENABLE
+
+#define NO_MUSIC_MODE
+
+#define LAYER_STATE_8BIT

@@ -60,7 +60,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|-------+-------+-------+-------+-------|                  |-------+-------+-------+-------+-------|
         KC_Z,   KC_X,   KC_C,   KC_V,   KC_B,                      KC_N,   KC_M,KC_COMM, KC_DOT,KC_SLSH,\
   //|-------+-------+-------+-------+-------+-------|  |-------+-------+-------+-------+-------+-------|
-      OS_SFT, OS_ALT, OS_CTL, NUMBER, MT_SPC, OS_GUI,    OS_CTL, SFTENT, SYMBOL, OS_GUI, OS_ALT, OS_SFT\
+     KC_LSFT,KC_LCTL,KC_LALT,KC_LGUI, MT_SPC, NUMBER,    SYMBOL, SFTENT,KC_RCTL,KC_RALT,KC_RGUI,KC_RSFT\
   //|-------+-------+-------+-------+-------+-------|  |-------+-------+-------+-------+-------+-------|
   ),
 
@@ -72,7 +72,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|-------+-------+-------+-------+-------|                  |-------+-------+-------+-------+-------|
      KC_HASH, KC_DLR,KC_PIPE,KC_TILD, KC_GRV,                   KC_PLUS,KC_PERC,KC_BSLS,  KC_AT,XXXXXXX,\
   //|-------+-------+-------+-------+-------+-------|  |-------+-------+-------+-------+-------+-------|
-     XXXXXXX,XXXXXXX,XXXXXXX, FUNCTN,XXXXXXX,XXXXXXX,   XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX \
+     XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX, FUNCTN,   XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX \
   //|-------+-------+-------+-------+-------+-------|  |-------+-------+-------+-------+-------+-------|
   ),
 
@@ -84,7 +84,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|-------+-------+-------+-------+-------|                  |-------+-------+-------+-------+-------|
      XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX,                   KC_MINS,   KC_1,   KC_2,   KC_3,KC_PLUS,\
   //|-------+-------+-------+-------+-------+-------|  |-------+-------+-------+-------+-------+-------|
-     XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX,   XXXXXXX,XXXXXXX, FUNCTN,XXXXXXX,XXXXXXX,XXXXXXX \
+     XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX,    FUNCTN,XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX \
   //|-------+-------+-------+-------+-------+-------|  |-------+-------+-------+-------+-------+-------|
   ),
 
@@ -108,7 +108,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|-------+-------+-------+-------+-------|                  |-------+-------+-------+-------+-------|
         UNDO,    CUT,   COPY,  PASTE,   REDO,                   XXXXXXX,PREVTAB,NEXTTAB,XXXXXXX,XXXXXXX,\
   //|-------+-------+-------+-------+-------+-------|  |-------+-------+-------+-------+-------+-------|
-     XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX,   XXXXXXX,KC_LALT,XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX \
+     XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX,   XXXXXXX,KC_LSFT,XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX \
   //|-------+-------+-------+-------+-------+-------|  |-------+-------+-------+-------+-------+-------|
   )
 };

@@ -10,7 +10,7 @@ enum layer_names {
 
 // Mod-Tap Modifiers
 #define ALTTAB ALT_T(KC_TAB)
-#define CTLBSP CTL_T(KC_BSPC)
+#define CTLESC CTL_T(KC_ESC)
 #define SFTENT SFT_T(KC_ENT)
 
 // Mod-Tap Layers
@@ -46,23 +46,23 @@ enum layer_names {
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [_QWERTY] = LAYOUT_reviung41(
     ALTTAB,   KC_Q,     KC_W,     KC_E,     KC_R,      KC_T,               KC_Y,     KC_U,     KC_I,     KC_O,     KC_P,     KC_BSPC,
-    CTLBSP,   KC_A,     KC_S,     KC_D,     KC_F,      KC_G,               KC_H,     KC_J,     KC_K,     KC_L,     KC_SCLN,  KC_ENT,
-    OS_SFT,   KC_Z,     KC_X,     KC_C,     KC_V,      KC_B,               KC_N,     KC_M,     KC_COMM,  KC_DOT,   KC_SLSH,  OS_SFT,
-                                            NUMBER,    MT_SPC,   OS_GUI,   SFTENT,   SYMBOL
+    CTLESC,   KC_A,     KC_S,     KC_D,     KC_F,      KC_G,               KC_H,     KC_J,     KC_K,     KC_L,     KC_SCLN,  KC_ENT,
+    NUMBER,   KC_Z,     KC_X,     KC_C,     KC_V,      KC_B,               KC_N,     KC_M,     KC_COMM,  KC_DOT,   KC_SLSH,  OS_SFT,
+                                            KC_LGUI,   MT_SPC,   SYMBOL,   SFTENT,   KC_LCTL
   ),
 
   [_SYMBOL] = LAYOUT_reviung41(
     _______,  KC_DQUO,  KC_UNDS,  KC_LBRC,  KC_RBRC,   KC_CIRC,            KC_EXLM,  KC_LT,    KC_GT,    KC_EQL,   KC_AMPR,  _______,
     _______,  KC_SLSH,  KC_MINS,  KC_LCBR,  KC_RCBR,   KC_ASTR,            KC_QUES,  KC_LPRN,  KC_RPRN,  KC_QUOT,  KC_COLN,  _______,
-    _______,  KC_HASH,  KC_DLR,   KC_PIPE,  KC_TILD,   KC_GRV,             KC_PLUS,  KC_PERC,  KC_BSLS,  KC_AT,    XXXXXXX,  _______,
-                                            FUNCTN,    XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX
+    FUNCTN,   KC_HASH,  KC_DLR,   KC_PIPE,  KC_TILD,   KC_GRV,             KC_PLUS,  KC_PERC,  KC_BSLS,  KC_AT,    XXXXXXX,  _______,
+                                            XXXXXXX,   XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX
   ),
 
   [_NUMBER] = LAYOUT_reviung41(
     XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,   XXXXXXX,            XXXXXXX,  KC_7,     KC_8,     KC_9,     KC_PERC,  XXXXXXX,
     XXXXXXX,  OS_CTL,   OS_ALT,   OS_GUI,   OS_SFT,    XXXXXXX,            KC_0,     KC_4,     KC_5,     KC_6,     KC_ASTR,  KC_SLSH,
     XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,   XXXXXXX,            XXXXXXX,  KC_1,     KC_2,     KC_3,     KC_PLUS,  KC_MINS,
-                                            XXXXXXX,   XXXXXXX,  XXXXXXX,  XXXXXXX,  FUNCTN
+                                            XXXXXXX,   XXXXXXX,  FUNCTN,   XXXXXXX,  XXXXXXX
   ),
 
   [_FUNCTION] = LAYOUT_reviung41(
@@ -75,8 +75,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [_NAV] = LAYOUT_reviung41(
     XXXXXXX,  XXXXXXX,  XXXXXXX,  BS_WORD,  DE_WORD,   BS_LINE,            KC_HOME,  KC_PGDN,  KC_PGUP,  KC_END,   HISTFW,    XXXXXXX,
     KC_LCTL,  KC_LALT,  KC_LGUI,  KC_BSPC,  KC_DEL,    KC_LSFT,            KC_LEFT,  KC_DOWN,  KC_UP,    KC_RGHT,  HISTBK,    XXXXXXX,
-    XXXXXXX,  UNDO,     CUT,      COPY,     PASTE,     REDO,               HISTBK,   PREVTAB,  NEXTTAB,  HISTFW,   XXXXXXX,   XXXXXXX,
-                                            XXXXXXX,   XXXXXXX,  XXXXXXX,  KC_LALT,  XXXXXXX
+    XXXXXXX,  UNDO,     CUT,      COPY,     PASTE,     REDO,               XXXXXXX,  PREVTAB,  NEXTTAB,  XXXXXXX,  XXXXXXX,   XXXXXXX,
+                                            XXXXXXX,   XXXXXXX,  XXXXXXX,  KC_LSFT,  XXXXXXX
   ),
 };
 

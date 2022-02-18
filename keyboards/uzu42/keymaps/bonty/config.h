@@ -30,11 +30,21 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #define USE_SERIAL_PD2
 
+// Layer num
+#define DYNAMIC_KEYMAP_LAYER_COUNT 5
+
 #define TAPPING_FORCE_HOLD
 #define TAPPING_TERM 185
-#define TAPPING_TERM_PER_KEY
 #define PERMISSIVE_HOLD
 
 // Combos
 #define COMBO_TERM 50
 #define COMBO_COUNT 5
+
+// for light compile
+#undef LOCKING_SUPPORT_ENABLE
+#undef LOCKING_RESYNC_ENABLE
+
+#define NO_MUSIC_MODE
+
+#define LAYER_STATE_8BIT
